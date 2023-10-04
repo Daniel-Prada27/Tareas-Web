@@ -4,7 +4,15 @@ const contenedor = document.getElementById('contenedor');
 const borrarBtn = document.getElementById('boton-borrar');
 
 agregarBtn.addEventListener('click', agregar);
+input.addEventListener('keyup', agregarConEnter);
 borrarBtn.addEventListener('click', borrar);
+
+
+function agregarConEnter(key) {
+    if (key.key === 'Enter') { // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+        agregar();
+    }
+}
 
 function agregar() {
 
