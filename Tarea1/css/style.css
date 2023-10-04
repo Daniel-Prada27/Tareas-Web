@@ -1,0 +1,51 @@
+*{
+    background-color: aliceblue;
+}
+#contenedor{
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+#input-usuario{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+h4{
+    text-align: center;
+}
+#boton-agregar{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px 16px;
+    outline: none;
+    border: none;
+    margin: 0 5px;
+    color: darkcyan;
+    background: white;
+    font-size: 19px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, .09);
+}
+#boton-borrar{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px 16px;
+    outline: none;
+    border: none;
+    margin: 0 5px;
+    color: darkcyan;
+    background: white;
+    font-size: 19px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, .09);
+
+}
