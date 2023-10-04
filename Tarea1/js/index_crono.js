@@ -1,51 +1,58 @@
-const stopwatch = document.getElementById('stopwatch');
-const playPauseButton = document.getElementById('play-pause');
-const secondsSphere = document.getElementById('seconds-sphere');
+let hr = min = sec = ms = "0" + 0, startTimer;
 
-let stopwatchInterval;
-let runningTime = 0;
+const iniciarBtn = document.querySelector(".iniciar"),
+    pararBtn = document.querySelector(".parar"),
+    reiniciarBtn = document.querySelector(".reiniciar");
 
-const playPause = () => {
-    const isPaused = !playPauseButton.classList.contains('running');
-    if (isPaused) {
-        playPauseButton.classList.add('running');
-        start();
-    } else {
-        playPauseButton.classList.remove('running');
-        pause();
-    }
+iniciarBtn.addEventListener("click", iniciar);
+pararBtn.addEventListener("click", parar);
+reiniciarBtn.addEventListener("click", reiniciar);
+
+function iniciar(){
+    iniciarBtn.classList.add("activar");
+    pararBtn.classList.remove("pararActivar");
+
+    startTimer = setInterval(() =>{
+        ms++
+        ms = ms < 10 ? "0" + ms : ms;
+
+        if(ms == 100){
+            sec++;
+            sec = sec < 10 ? "0" + sec : sec;
+            ms = "0" + 0;
+        }
+        if(sec == 60){
+            min++;
+            min = min < 10 ? "0" + min : min;
+            sec = "0" + 0;
+        }
+        if(min == 60){
+            hr++;
+            hr = hr < 10 ? "0" + hr : hr;
+            min = "0" + 0;
+        }
+
+        putValue();
+    }, 10);
 }
 
-const pause = () => {
-    secondsSphere.style.animationPlayState = 'paused';
-    clearInterval(stopwatchInterval);
+function parar(){
+    iniciarBtn.classList.remove("active");
+    pararBtn.classList.remove("stopActive");
+    clearInterval(startTimer);
 }
 
-const stop = () => {
-    secondsSphere.style.transform = 'rotate(-90deg) translateX(60px)';
-    secondsSphere.style.animation = 'none';
-    playPauseButton.classList.remove('running');
-    runningTime = 0;
-    clearInterval(stopwatchInterval);
-    stopwatch.textContent = '00:00';
+function reiniciar(){
+    iniciarBtn.classList.remove("active");
+    pararBtn.classList.remove("stopActive");
+    clearInterval(startTimer);
+    hr = min = sec = ms = "0" + 0;
+    putValue();
 }
 
-const start = () => {
-    secondsSphere.style.animation = 'rotacion 60s linear infinite';
-    let startTime = Date.now() - runningTime;
-    secondsSphere.style.animationPlayState = 'running';
-    stopwatchInterval = setInterval( () => {
-        runningTime = Date.now() - startTime;
-        stopwatch.textContent = calculateTime(runningTime);
-    }, 1000)
-}
-
-const calculateTime = runningTime => {
-    const total_seconds = Math.floor(runningTime / 1000);
-    const total_minutes = Math.floor(total_seconds / 60);
-
-    const display_seconds = (total_seconds % 60).toString().padStart(2, "0");
-    const display_minutes = total_minutes.toString().padStart(2, "0");
-
-    return `${display_minutes}:${display_seconds}`
+function putValue(){
+    document.querySelector('.milisegundos').innerHTML = ms;
+    document.querySelector('.segundos').innerHTML = sec;
+    document.querySelector('.minutos').innerHTML = min;
+    document.querySelector('.hora').innerHTML = hr;
 }

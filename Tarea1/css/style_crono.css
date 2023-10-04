@@ -1,75 +1,68 @@
-main {
-    font-family: 'Roboto Mono', monospace;
-    position: relative;
-}
-
-.circle {
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    border: 1px solid #fff;
-    color: #ffffff;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.circle::before {
-    content: '';
-    border-radius: 50%;
-    z-index: -1;
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    left: calc(50% - 80px);
-    top: calc(50% - 80px);
-    background-color: #0d6bb4;
-}
-
-.seconds-sphere {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    position: absolute;
-    left: calc(50% - 10px);
-    top: calc(50% - 10px);
-    animation: rotacion 60s linear infinite;
-    animation-play-state: paused;
-}
-
-@keyframes rotacion {
-	from { 	transform: rotate(-90deg) translateX(60px); }
-	to   {  transform: rotate(270deg) translateX(60px); }
-}
-
-.buttons {
-    margin-top: 10px;
-    display: inline-flex;
-}
-
-.paused {
-    height: 10px;
-    border-width: 5px 0 5px 10px;
-    cursor: pointer;
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    margin-left: 15px;
-    border-color: transparent transparent transparent #fff;
-    transition: 100ms all ease;
-    will-change: border-width;
-    border-style: solid;
+    font-family: sans-serif;
 }
 
-.running {
-    border-style: double;
-    border-width: 0 0 0 10px;
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
 }
 
-.stop {
-    background-color: #fff;
-    height: 10px;
+.contorno{
+    user-select: none;
+}
+
+.contorno .tiempo{
+    height: 100px;
+    background: darkcyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0, .09);
+}
+
+.contorno .tiempo span{
+    width: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    color: black;
+}
+
+.tiempo span.colon{
     width: 10px;
+}
+
+.tiempo span.ms-colon, .tiempo span.milisegundos{
+    color: white;
+}
+
+.contorno .botones{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botones button{
+    padding: 6px 16px;
+    outline: none;
+    border: none;
+    margin: 0 5px;
+    color: darkcyan;
+    background: white;
+    font-size: 19px;
+    font-weight: 500;
+    border-radius: 4px;
     cursor: pointer;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, .09);
+}
+
+.botones button.activar, .botones button.pararActivar{
+    pointer-events: none;
+    opacity: .7;
 }
