@@ -9,8 +9,8 @@ pararBtn.addEventListener("click", parar);
 reiniciarBtn.addEventListener("click", reiniciar);
 
 function iniciar(){
-    iniciarBtn.classList.add("activar");
-    pararBtn.classList.remove("pararActivar");
+    iniciarBtn.classList.add("desactivado");
+    pararBtn.classList.remove("desactivado");
 
     startTimer = setInterval(() =>{
         ms++
@@ -33,18 +33,18 @@ function iniciar(){
         }
 
         putValue();
-    }, 10);
+    }, 10); // Ya no se cuentan 1000ms sino 100, para compensar el conteo de 10ms y no de 1ms
 }
 
 function parar(){
-    iniciarBtn.classList.remove("active");
-    pararBtn.classList.remove("stopActive");
+    iniciarBtn.classList.remove("desactivado");
+    pararBtn.classList.add("desactivado");
     clearInterval(startTimer);
 }
 
 function reiniciar(){
-    iniciarBtn.classList.remove("active");
-    pararBtn.classList.remove("stopActive");
+    iniciarBtn.classList.remove("desactivado");
+    // pararBtn.classList.remove("stopActive");
     clearInterval(startTimer);
     hr = min = sec = ms = "0" + 0;
     putValue();
