@@ -19,6 +19,7 @@ function agregar() {
     let newEntry = document.createElement('div');
     newEntry.textContent = obtenerTexto();
 
+    // String.trim() elimina los espacios que contenga la cadena
     if (newEntry.textContent == null | newEntry.textContent == '' | newEntry.textContent.trim().length == 0) {
         return;
     }

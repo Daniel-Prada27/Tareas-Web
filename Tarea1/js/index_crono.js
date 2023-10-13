@@ -14,7 +14,7 @@ function iniciar(){
 
     startTimer = setInterval(() =>{
         ms++
-        ms = ms < 10 ? "0" + ms : ms;
+        ms = ms < 10 ? "0" + ms : ms;  // Mientras que ms sea menor que 100, será un string "0X" donde X es ms
 
         if(ms == 100){
             sec++;
@@ -44,7 +44,6 @@ function parar(){
 
 function reiniciar(){
     iniciarBtn.classList.remove("desactivado");
-    // pararBtn.classList.remove("stopActive");
     clearInterval(startTimer);
     hr = min = sec = ms = "0" + 0;
     putValue();
