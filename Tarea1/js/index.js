@@ -19,7 +19,7 @@ function agregar() {
     let newEntry = document.createElement('div');
     newEntry.textContent = obtenerTexto();
 
-    if (newEntry.textContent == null | newEntry.textContent == '') {
+    if (newEntry.textContent == null | newEntry.textContent == '' | newEntry.textContent.trim().length == 0) {
         return;
     }
 
